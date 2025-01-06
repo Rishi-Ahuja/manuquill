@@ -1,5 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
 
+// Check if the API key exists
+if (!process.env.REACT_APP_OPENAI_API_KEY) {
+  throw new Error("Missing OpenAI API Key. Please set REACT_APP_OPENAI_API_KEY in your environment variables.");
+}
+
 // OpenAI Configuration
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY, // Secure API key
@@ -36,7 +41,7 @@ export const analyzeText = async (text) => {
     console.log("Raw Response from API:", rawResponse);
 
     // Clean up response to remove code block markers
-    rawResponse = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+    rawResponse = rawResponse.replace(/```json/g, "").replace(/```/g, "").trim();
 
     // Parse cleaned JSON
     let cleanedJSON;
