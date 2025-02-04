@@ -1,13 +1,320 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*===========================================================================
+  ManuQuill - Effortless, Elegant Documents
+  Advanced CSS for a refined, elegant interface using Tailwind and custom styles.
+============================================================================*/
+
+/* CSS Variables for Brand Colors & Fonts */
+:root {
+  --manuquill-primary: #2c3e50;       /* Dark Blue-Gray */
+  --manuquill-secondary: #34495e;     /* Lighter Blue-Gray */
+  --manuquill-accent: #d2b48c;        /* Tan Accent */
+  --manuquill-bg: #f8f9fa;            /* Off-White Background */
+  --manuquill-text: #2c3e50;          /* Dark Text */
+  --manuquill-muted: #7f8c8d;         /* Muted Gray */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Global Styles */
+body {
+  @apply bg-gradient-to-br from-indigo-50 to-gray-100 text-[var(--manuquill-text)];
+  background-color: var(--manuquill-bg);
+  font-family: "Open Sans", sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* ManuQuill Glassmorphism Container */
+.glass {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+}
+
+/* Advanced Floating Animation for Containers */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ManuQuill Header Typography */
+header h1 {
+  font-family: "Merriweather", serif;
+  font-style: italic;
+  color: var(--manuquill-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+header p {
+  color: var(--manuquill-muted);
+}
+
+/* Elegant Button Styles */
+.elegant-btn {
+  @apply font-bold py-3 px-8 rounded-full shadow-xl;
+  background-image: linear-gradient(135deg, var(--manuquill-primary), var(--manuquill-secondary));
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+}
+.elegant-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(44, 62, 80, 0.4);
+  background-image: linear-gradient(135deg, var(--manuquill-secondary), var(--manuquill-primary));
+}
+
+/* Button Ripple Effect */
+.elegant-btn::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+.elegant-btn:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+}
+
+/* Floating Color Orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(30px);
+  animation: orbFloat 20s infinite alternate;
+  z-index: 0;
+}
+
+.orb.orb1 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #ff9a9e, transparent);
+  top: 10%;
+  left: 5%;
+  animation-duration: 25s;
+}
+
+.orb.orb2 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #fad0c4, transparent);
+  bottom: 10%;
+  right: 5%;
+  animation-duration: 30s;
+}
+
+.orb.orb3 {
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, #a1c4fd, transparent);
+  top: 40%;
+  right: 20%;
+  animation-duration: 20s;
+}
+
+.orb.orb4 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #c1dfc4, transparent);
+  bottom: 20%;
+  left: 10%;
+  animation-duration: 27s;
+}
+
+.orb.orb5 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #ffecd2, transparent);
+  top: 20%;
+  right: 10%;
+  animation-duration: 33s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  100% {
+    transform: translateY(-20px) translateX(20px);
+  }
+}
+
+/* Modal Styles */
+.modal-container {
+  @apply bg-white rounded-2xl p-8 shadow-3xl;
+  animation: modalAppear 0.5s ease-out forwards;
+}
+@keyframes modalAppear {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.close-button {
+  @apply bg-transparent border-0 text-[var(--manuquill-text)] cursor-pointer;
+}
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Aspect Ratio Utility for Modal Video */
+.aspect-w-16 {
+  position: relative;
+  width: 100%;
+}
+.aspect-w-16::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+.aspect-h-9 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Footer Advanced Styling */
+footer {
+  background-color: rgba(248, 249, 250, 0.95);
+  border-top: 1px solid var(--manuquill-accent);
+  backdrop-filter: blur(4px);
+}
+footer p {
+  font-family: "Open Sans", sans-serif;
+  color: var(--manuquill-muted);
+}
+footer a {
+  color: var(--manuquill-primary);
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: var(--manuquill-secondary);
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--manuquill-secondary);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--manuquill-primary);
+}
+
+/* End-of-Document Marker */
+.end-of-document {
+  font-family: "Merriweather", serif;
+  font-size: 1.75rem;
+  color: var(--manuquill-muted);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Additional utility classes if needed */
+.hidden { display: none !important; }
+.visible { display: block !important; }
+
+/* Loader CSS for Never-Ending Box Animation */
+/* The loader container is now positioned relative so that it appears above the processing text */
+#loader {
+  width: 5.4em;
+  height: 5.4em;
+  background: transparent;
+  z-index: 100;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+#hill {
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  top: 1.7em;
+  left: 1.7em;
+  background: transparent;
+  border-left: 0.25em solid black;
+  transform: rotate(45deg);
+}
+
+#hill:after {
+  content: '';
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  left: 0;
+  background: transparent;
+}
+
+#box {
+  position: absolute;
+  left: 0;
+  bottom: -0.1em;
+  width: 1em;
+  height: 1em;
+  background: transparent;
+  border: 0.25em solid black;
+  border-radius: 15%;
+  transform: translate(0, -1em) rotate(-45deg);
+  animation: push 2.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite;
+}
+
+@keyframes push {
+  0% {
+    transform: translate(0, -1em) rotate(-45deg);
+  }
+  5% {
+    transform: translate(0, -1em) rotate(-50deg);
+  }
+  20% {
+    transform: translate(1em, -2em) rotate(47deg);
+  }
+  25% {
+    transform: translate(1em, -2em) rotate(45deg);
+  }
+  30% {
+    transform: translate(1em, -2em) rotate(40deg);
+  }
+  45% {
+    transform: translate(2em, -3em) rotate(137deg);
+  }
+  50% {
+    transform: translate(2em, -3em) rotate(135deg);
+  }
+  55% {
+    transform: translate(2em, -3em) rotate(130deg);
+  }
+  70% {
+    transform: translate(3em, -4em) rotate(217deg);
+  }
+  75% {
+    transform: translate(3em, -4em) rotate(220deg);
+  }
+  100% {
+    transform: translate(0, -1em) rotate(-225deg);
+  }
 }
