@@ -18,7 +18,7 @@ const openai = new OpenAIApi(configuration);
 export const analyzeText = async (text) => {
   try {
     const response = await openai.createChatCompletion({
-      model: "gpt-4", // Update the model name as needed
+      model: "gpt-4o-mini", // Update the model name as needed
       messages: [
         {
           role: "system",
