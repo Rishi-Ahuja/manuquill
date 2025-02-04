@@ -1,70 +1,166 @@
-# Getting Started with Create React App
+```markdown
+# ManuQuill
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_BADGE/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)  
+[![Build Status](https://img.shields.io/travis/Rishi-Ahuja/manuquill/master)](https://travis-ci.com/Rishi-Ahuja/manuquill)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+ManuQuill is a modern web application that transforms raw text into beautifully formatted documents. With its sleek glassmorphism interface and dynamic, floating color orbs, ManuQuill brings elegance and efficiency to document creation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Automated Text Analysis**  
+  Seamlessly converts unstructured text into a polished, professional document.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Dynamic Template Selection**  
+  Choose from multiple visually distinct templates to match the desired tone.
 
-### `npm run build`
+- **Modern UI/UX**  
+  Enjoy a responsive and aesthetically pleasing interface built with advanced CSS effects.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Effortless Deployment**  
+  Continuously deployed via GitHub Pages and Netlify for a smooth, up-to-date user experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Scalable & Customizable**  
+  Designed to grow with your needs, making document generation both powerful and flexible.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<div align="center">
+  <img src="public/home.png" alt="ManuQuill Home Screen" width="600" /><br>
+  <em>The home screen where you input raw text.</em>
+</div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="center" style="margin-top: 20px;">
+  <img src="public/template.png" alt="Template Selection" width="600" /><br>
+  <em>Select your desired document template.</em>
+</div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Install Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+# or
+yarn install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Configure Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Create a `.env` file in the root directory and add your API keys (do not commit sensitive information):
 
-### Analyzing the Bundle Size
+```env
+API_KEY=your_api_key_here
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Running Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Start the development server:
 
-### Advanced Configuration
+```bash
+npm start
+# or
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Open [http://localhost:3000](http://localhost:3000) in your browser to see ManuQuill in action.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Building for Production
 
-### `npm run build` fails to minify
+Generate a production-ready build:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+# or
+yarn build
+```
+
+The output will be placed in the `build` folder.
+
+---
+
+## Deployment
+
+### GitHub Pages
+
+**Set the Homepage Field (Optional):**
+
+In your `package.json`, add:
+
+```json
+"homepage": "https://Rishi-Ahuja.github.io/manuquill"
+```
+
+**Deploy using gh-pages:**
+
+- **Install gh-pages:**
+
+  ```bash
+  npm install --save-dev gh-pages
+  ```
+
+- **Add these scripts to your `package.json`:**
+
+  ```json
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+  ```
+
+- **Deploy:**
+
+  ```bash
+  npm run deploy
+  ```
+
+### Netlify
+
+The repository is connected to Netlify. With every push to the main branch, Netlify automatically triggers a build with:
+
+- **Build Command:** `npm run build`
+- **Publish Directory:** `build`
+
+If needed, update environment variables or build settings in the Netlify dashboard under **Site Settings > Build & Deploy > Environment**.
+
+---
+
+## Contributing
+
+Contributions, feedback, and bug reports are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+## Contact
+
+For any questions, feature requests, or bug reports, please reach out at:
+
+- **Email:** [rishiahuja.1404@gmail.com](mailto:rishiahuja.1404@gmail.com)
+- **GitHub Issues:** [Raise an issue](https://github.com/Rishi-Ahuja/manuquill/issues)
+
+---
+
+*Happy Document Crafting!*
+```
