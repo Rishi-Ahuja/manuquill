@@ -3,7 +3,6 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Rishi-Ahuja/manuquill/blob/master/LICENSE)  
 [![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fmanuquill.netlify.app)](https://manuquill.netlify.app)  
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Rishi-Ahuja/manuquill/main.yml?branch=master)](https://github.com/Rishi-Ahuja/manuquill/actions)
 
 ---
 
